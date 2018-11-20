@@ -25,7 +25,7 @@ ROWCOUNT=$(echo "SELECT sequence_schema,sequence_name FROM information_schema.se
 
 if [ "$ROWCOUNT" = "0" ];
 then
-        echo "USER $PGUSER DOES NOT HAVE PERMISSIONS TO VIEW SCHEMAS"
+        echo "USER $PGUSER DOES NOT HAVE PERMISSIONS TO VIEW SEQUENCES"
         exit 0
 else
         for SEQUENCE in $(echo "SELECT sequence_schema,sequence_name FROM information_schema.sequences where sequence_schema = '$SCHEMA';" | $PSQLCMD | awk -F '|' '{print $2}' | grep -v 'tablename' | grep '^\ [a-Z]' | tr -d ' ')
