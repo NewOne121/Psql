@@ -3,7 +3,7 @@
 import psycopg2
 import getpass
 
-pswd=getpass.getpass('Enter password for ahml:')
+pswd=getpass.getpass('Enter password for $DBUSER:')
 pswd="'%s'" % pswd
 
 connpars=str("dbname='$DBNAME' user='$DBUSER' host='$HOSTNAME ' port='$PORT' password=" + pswd)
